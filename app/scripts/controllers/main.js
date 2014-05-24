@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('weatherApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, $weatherService) {
+
+    var currentWeather = $weatherService.getCurrent();
+    $scope.icon = currentWeather.icon;
+    $scope.title = currentWeather.title;
+    $scope.description = currentWeather.description;
+
   });
