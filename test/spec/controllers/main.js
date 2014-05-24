@@ -5,19 +5,18 @@ describe('Controller: MainCtrl', function () {
   // load the controller's module
   beforeEach(module('weatherApp'));
 
-  var MainCtrl,
-    scope;
+  var MainCtrl, scope;
 
   var icon = 'icon';
-  var title = 'title';
-  var description = 'description';
+  var temp = 'temp';
+  var windSpeed = 'windSpeed';
 
   var weatherService = {
       getCurrent : function(){
           return {
               icon : icon,
-              title : title,
-              description : description
+              temp : temp,
+              windSpeed : windSpeed
             };
         }
     };
@@ -27,7 +26,7 @@ describe('Controller: MainCtrl', function () {
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
       $scope: scope,
-      $weatherService: weatherService
+      weatherService: weatherService
     });
   }));
 
@@ -35,11 +34,11 @@ describe('Controller: MainCtrl', function () {
     expect(scope.icon).toBe(icon);
   });
 
-  it('should return title from weather service', function (){
-    expect(scope.title).toBe(title);
+  it('should return temperature from weather service', function (){
+    expect(scope.temp).toBe(temp);
   });
 
-  it('should return description from weather service', function (){
-    expect(scope.description).toBe(description);
+  it('should return wind speed from weather service', function (){
+    expect(scope.windSpeed).toBe(windSpeed);
   });
 });

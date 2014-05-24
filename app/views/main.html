@@ -1,10 +1,10 @@
 
 
 <div class="jumbotron">
-  <h1 ng-model="title"></h1>
+  <h1>Current Weather</h1>
   <p class="lead">
-    <img ng-src="http://openweathermap.org/img/w/{{icon}}.png" alt="{{title}}"><br>
-    {{description}}
+    <img ng-src="http://openweathermap.org/img/w/{{icon}}.png" alt="{{icon}}"><br>
+    The temperature is {{temp}} C, and wind speed is {{windSpeed}}.
   </p>
 </div>
 
