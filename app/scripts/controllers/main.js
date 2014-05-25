@@ -8,7 +8,7 @@ angular.module('weatherApp')
     weatherService.get(function(data) {
 
       $scope.weather.icon = data.weather[0].icon;
-      $scope.weather.temp = data.main.temp;
+      $scope.weather.temp = (data.main.temp - 273.15).toFixed(2);
       $scope.weather.windSpeed = data.wind.speed;
 
     });

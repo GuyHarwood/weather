@@ -8,7 +8,7 @@ describe('Controller: MainCtrl', function () {
   var MainCtrl, scope;
 
   var icon = 'icon';
-  var temp = 'temp';
+  var temp = 350;
   var windSpeed = 'windSpeed';
 
   var weatherService = {
@@ -50,5 +50,9 @@ describe('Controller: MainCtrl', function () {
 
   it('should return wind speed from weather service', function (){
     expect(scope.weather.windSpeed).toBe(windSpeed);
+  });
+
+  it('should convert kelvin temperature to celcius', function(){
+    expect(scope.weather.temp).toBe(temp - 273.15);
   });
 });
