@@ -3,9 +3,13 @@
 angular.module('weatherApp')
   .controller('MainCtrl', function ($scope, weatherService) {
 
-    var currentWeather = weatherService.getCurrent();
-    $scope.icon = currentWeather.icon;
-    $scope.temp = currentWeather.temp;
-    $scope.windSpeed = currentWeather.windSpeed;
+    $scope.weather = {};
 
+    weatherService.get(function(data) {
+
+      $scope.weather.icon = data.weather[0].icon;
+      $scope.weather.temp = data.main.temp;
+      $scope.weather.windSpeed = data.wind.speed;
+
+    });
   });

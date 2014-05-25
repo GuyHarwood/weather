@@ -12,12 +12,18 @@ describe('Controller: MainCtrl', function () {
   var windSpeed = 'windSpeed';
 
   var weatherService = {
-      getCurrent : function(){
-          return {
-              icon : icon,
-              temp : temp,
-              windSpeed : windSpeed
-            };
+      get : function(callback){
+          callback({
+              weather : [{
+                icon : icon
+              }],
+              main : {
+                temp : temp
+              },
+              wind : {
+                speed : windSpeed
+              }
+            });
         }
     };
 
@@ -30,15 +36,19 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
+  it('should return a weather object on the scope', function(){
+    expect(scope.weather).toBeDefined();
+  });
+
   it('should return icon from weather service', function () {
-    expect(scope.icon).toBe(icon);
+    expect(scope.weather.icon).toBe(icon);
   });
 
   it('should return temperature from weather service', function (){
-    expect(scope.temp).toBe(temp);
+    expect(scope.weather.temp).toBe(temp);
   });
 
   it('should return wind speed from weather service', function (){
-    expect(scope.windSpeed).toBe(windSpeed);
+    expect(scope.weather.windSpeed).toBe(windSpeed);
   });
 });
